@@ -21,6 +21,15 @@
     to OpenAI to generate responses. You can delete your account at any time from inside the app.
   </div>
 
+  <div class="notice">
+    <strong>Note on sensitive data.</strong> Because Sakina is a spiritual-wellness app, some
+    of the information you share — like your religious practice, the emotions you struggle
+    with, and the duas you write — is personally sensitive. This policy explains exactly
+    which of those fields are stored, where, and for what purpose. In particular, Section 4
+    lists every third-party service that receives any of this information, and Section 7
+    describes how you can access, correct, or delete it at any time.
+  </div>
+
   <div class="toc">
     <strong>Contents</strong>
     <ol>
@@ -63,10 +72,26 @@
       email and name you choose to share).
     </li>
     <li>
-      <strong>Onboarding answers.</strong> During onboarding we ask about your age range,
-      what brings you to Sakina, your prayer frequency, your familiarity with the 99 Names,
-      emotions you experience, aspirations, and your preferred daily commitment time. These
-      answers personalize your experience inside the app and are stored against your account.
+      <strong>Onboarding answers.</strong> During onboarding we ask a series of personalization
+      questions. Your answers are stored against your account and also sent to our analytics
+      provider as user-profile properties (see Section 4). Specifically, we collect:
+      <ul>
+        <li><em>age_range</em> — e.g., 18–24, 25–34</li>
+        <li><em>intention</em> — what brings you to Sakina (e.g., "spiritual growth", "difficult time")</li>
+        <li><em>prayer_frequency</em> — how often you pray</li>
+        <li><em>quran_connection</em> — how connected you feel to the Quran</li>
+        <li><em>familiarity</em> — your familiarity with the 99 Names</li>
+        <li><em>resonant_name_slug</em> — the Name that most resonated with you</li>
+        <li><em>struggles</em> — areas you struggle with (e.g., "anxiety", "grief", "loneliness")</li>
+        <li><em>common_emotions</em> — emotions you commonly experience</li>
+        <li><em>aspirations</em> — qualities you aspire to (e.g., "more patient", "closer to Allah")</li>
+        <li><em>dua_topics</em> and optional free-text <em>dua_topics_other</em> — topics you want to make duas about</li>
+        <li><em>attribution</em> — how you heard about Sakina</li>
+        <li><em>daily_commitment_minutes</em> — how many minutes per day you want to spend in the app</li>
+        <li><em>reminder_time</em> — the local time you want your daily reminder</li>
+      </ul>
+      Free-text inputs (like the "other" field on dua topics) are capped at 280 characters
+      and trimmed before being stored.
     </li>
     <li>
       <strong>Check-ins, reflections, and duas.</strong> The feelings you type, the AI-generated
@@ -74,16 +99,18 @@
       revisit them in your journal.
     </li>
     <li>
-      <strong>Preferences.</strong> Daily reminder time, notification preferences, and chosen
-      title or display name.
+      <strong>Preferences.</strong> Daily reminder time, notification preferences (per-category
+      toggles for streak, quest, Muhasabah, and milestone notifications; a master push toggle),
+      timezone (so reminders fire at the correct local time), and chosen title or display name.
     </li>
   </ul>
 
   <h3>2.2 Information collected automatically</h3>
   <ul>
     <li>
-      <strong>Usage data.</strong> Which features you use, when you open the app, streak and
-      daily-reward activity, quest progress, and in-app events (for example: a reflection was
+      <strong>Usage data.</strong> Which features you use, when you open the app, streak
+      activity (current streak length and last-active date), daily-reward claims, quest
+      progress, token and scroll balances, and in-app events (for example: a reflection was
       saved, the paywall was viewed).
     </li>
     <li>
@@ -158,14 +185,38 @@
       <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy policy</a>.
     </li>
     <li>
-      <strong>Mixpanel</strong> — product analytics. Receives anonymized in-app events (for
-      example: "paywall viewed", "reflection saved") tied to your Sakina user identifier.
+      <strong>Mixpanel</strong> — product analytics. Mixpanel receives two categories of data,
+      tied to your Sakina user identifier:
+      <ul>
+        <li>
+          <em>Events</em> — in-app actions (for example: "paywall viewed", "reflection saved",
+          "onboarding step completed").
+        </li>
+        <li>
+          <em>User-profile properties</em> — the onboarding answers listed in Section 2.1
+          (<em>age_range</em>, <em>intention</em>, <em>prayer_frequency</em>,
+          <em>quran_connection</em>, <em>familiarity</em>, <em>resonant_name_slug</em>,
+          <em>struggles</em>, <em>common_emotions</em>, <em>aspirations</em>,
+          <em>dua_topics</em>, <em>dua_topics_other</em>, <em>attribution</em>,
+          <em>daily_commitment_minutes</em>, <em>reminder_time</em>,
+          <em>commitment_accepted</em>) and the <em>onboarding_completed</em> flag.
+        </li>
+      </ul>
+      Some of these properties — specifically <em>intention</em>, <em>quran_connection</em>,
+      <em>prayer_frequency</em>, <em>struggles</em>, and <em>common_emotions</em> — describe
+      your religious practice, emotional state, or mental-health concerns. We use them only to
+      understand product usage in aggregate (for example, which onboarding segments convert
+      better) and to personalize notifications. We do not use them to build an advertising
+      profile, and we do not share them outside the processors listed in this section.
       <a href="https://mixpanel.com/legal/privacy-policy/" target="_blank" rel="noopener">Privacy policy</a>.
     </li>
     <li>
       <strong>OneSignal</strong> — push notification delivery. Receives a device token and
       your Sakina user identifier so we can send the scheduled daily reminder and milestone
-      notifications.
+      notifications. Notification targeting logic (which users receive which category, your
+      timezone, whether you are eligible based on your last-active date or streak status) is
+      computed on our Supabase backend and not stored as OneSignal tags — only the minimum
+      routing information needed to deliver a given push is passed to OneSignal.
       <a href="https://onesignal.com/privacy_policy" target="_blank" rel="noopener">Privacy policy</a>.
     </li>
   </ul>
